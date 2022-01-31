@@ -2,9 +2,9 @@ package laboratoire1;
 import java.util.*;
 public class RechercheTableau {
 
-	  // Ne pas changer ces fonctions, elles seront utilisées pour tester votre programme
-    // Elles peuvent cependant servir seulement d'interface et utiliser une méthode "helper" 
-    // avec des paramètres supplémentaires, au besoin. 
+	  // Ne pas changer ces fonctions, elles seront utilisï¿½es pour tester votre programme
+    // Elles peuvent cependant servir seulement d'interface et utiliser une mï¿½thode "helper" 
+    // avec des paramï¿½tres supplï¿½mentaires, au besoin. 
 	static long startTime = System.currentTimeMillis();
     public static int RechercheLineaire(int[] tab, int n, int x){
     	
@@ -22,9 +22,24 @@ public class RechercheTableau {
         
     }
 
-    public int RechercheBinaire(int[] tab, int n, int val){
-        return -1;
+    public static int RechercheBinaire(int[] tab, int n, int val){
+        return RechercheBinaireHelper(tab, 0, tab.length-1,val);
     }
+
+    static int RechercheBinaireHelper(int[] tab, int low, int high, int val)
+    {
+        int mid = (low + high) / 2;
+        if (low == high)
+            return -1;
+
+        if(tab[mid] > val)
+            return RechercheBinaireHelper(tab,low,mid,val);
+        else if (tab[mid] < val)
+            return RechercheBinaireHelper(tab,mid+1,high,val);
+        else
+            return mid;
+    }
+
 
     public int RechercheBinaireModifie(int[] tab, int n, int val){
         return -1;
